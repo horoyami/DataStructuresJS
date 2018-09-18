@@ -3,7 +3,7 @@ const chai = require("chai");
 
 describe("List test", function () {
 
-    it("should be created", function () {
+    it("Should be created", function () {
         let list = new List();
         chai.assert.equal(list instanceof List, true);
     });
@@ -14,21 +14,21 @@ describe("List test", function () {
         chai.assert.equal(list.back, undefined);
     });
 
-    it("push first element by back", function () {
+    it("Push first element by back", function () {
         let list = new List();
         list.back = 5;
         chai.assert.equal(list.front, 5);
         chai.assert.equal(list.back, 5);
     });
 
-    it("push first element by front", function () {
+    it("Push first element by front", function () {
         let list = new List();
         list.front = 5;
         chai.assert.equal(list.front, 5);
         chai.assert.equal(list.back, 5);
     });
 
-    it("push back many elems", function () {
+    it("Push back many elems", function () {
         let list = new List();
         list.back = 1;
         list.back = 2;
@@ -39,7 +39,7 @@ describe("List test", function () {
         chai.assert.equal(list.back, 5);
     });
 
-    it("push front many elems", function () {
+    it("Push front many elems", function () {
         let list = new List();
         list.front = 1;
         list.front = 2;
@@ -50,7 +50,7 @@ describe("List test", function () {
         chai.assert.equal(list.back, 1);
     });
 
-    it("size", function () {
+    it("Size", function () {
         let list = new List();
         list.front = 1;
         list.back = 2;
@@ -60,7 +60,7 @@ describe("List test", function () {
         chai.assert.equal(list.size, 5);
     });
 
-    it("push random many elems", function () {
+    it("Push random many elems", function () {
         let list = new List();
         list.front = 1;
         list.back = 2;
@@ -71,7 +71,7 @@ describe("List test", function () {
         chai.assert.equal(list.back, 4);
     });
 
-    it("popBack", function () {
+    it("PopBack", function () {
         let list = new List();
         list.front = 5;
         list.front = 4;
@@ -83,7 +83,7 @@ describe("List test", function () {
         chai.assert.equal(list.back, 3);
     });
 
-    it("popFront", function () {
+    it("PopFront", function () {
         let list = new List();
         list.back = 5;
         list.back = 4;
@@ -127,7 +127,7 @@ describe("List test", function () {
         chai.assert.equal(list.back, undefined);
     });
 
-    it("more pop than size", function () {
+    it("More pop than size", function () {
         let list = new List();
         list.back = 5;
         list.popBack();
@@ -138,7 +138,7 @@ describe("List test", function () {
         chai.assert.equal(list.back, undefined);
     });
 
-    it("isEmpty", function () {
+    it("IsEmpty", function () {
         let list = new List();
         chai.assert.equal(list.isEmpty(), true);
         list.back = 5;
@@ -147,4 +147,49 @@ describe("List test", function () {
         chai.assert.equal(list.isEmpty(), true);
     });
 
+    it("Iteration by for .. of ..", function () {
+        let list = new List();
+        list.back = 1;
+        list.back = 2;
+        list.back = 3;
+        list.back = 4;
+        list.back = 5;
+        let mas = [];
+
+        for (let v of list) {
+            mas.push(v);
+        }
+
+        chai.assert.equal(mas.length, 5);
+
+        for (let i = 0; i < mas.length; i++) {
+            chai.assert.equal(mas[i], i + 1);
+        }
+    });
+
+    it("Second iteration starts over", function () {
+        let list = new List();
+        list.back = 1;
+        list.back = 2;
+        list.back = 3;
+        list.back = 4;
+        list.back = 5;
+        let mas = [];
+
+        for (let v of list) {
+            let x = v;
+            x = x + x;
+        }
+
+        for (let v of list) {
+            mas.push(v);
+        }
+
+        chai.assert.equal(mas.length, 5);
+
+        for (let i = 0; i < mas.length; i++) {
+            chai.assert.equal(mas[i], i + 1);
+        }
+
+    });
 });

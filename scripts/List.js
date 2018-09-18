@@ -8,6 +8,28 @@ class List {
         this._root = null;
         this._last = null;
         this.size = 0;
+
+        this[Symbol.iterator] = function () {
+
+            let current = this._root;
+
+            return {
+                next() {
+                    if (current !== null) {
+                        let x = current.value;
+                        current = current.right;
+                        return {
+                            done: false,
+                            value: x
+                        }
+                    } else {
+                        return {
+                            done: true
+                        }
+                    }
+                }
+            };
+        };
     }
 
     isEmpty() {
