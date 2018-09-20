@@ -55,17 +55,17 @@ describe("Splay test", function () {
 
     describe("PreTest", function () {
 
-        it('EmptyTree is correct', function () {
+        it("EmptyTree is correct", function () {
             let tree = createEmptyTree();
             chai.assert.equal(isCorrectTree(tree._root), true);
         });
 
-        it('BalanceTree is correct', function () {
+        it("BalanceTree is correct", function () {
             let tree = createEmptyTree();
             chai.assert.equal(isCorrectTree(tree._root), true);
         });
 
-        it('Bamboo is correct', function () {
+        it("Bamboo is correct", function () {
             let tree = createEmptyTree();
             chai.assert.equal(isCorrectTree(tree._root), true);
         });
@@ -93,7 +93,7 @@ describe("Splay test", function () {
 
         describe("_find", function () {
 
-            it('on EmptyTree', function () {
+            it("on EmptyTree", function () {
                 let tree = createEmptyTree();
                 let a = tree._find(5);
                 chai.assert.equal(a, null);
@@ -129,7 +129,7 @@ describe("Splay test", function () {
         });
 
         describe("_splay", function () {
-            it('on EmptyTree', function () {
+            it("on EmptyTree", function () {
                 let tree = createEmptyTree();
                 tree._splay(5);
                 chai.assert.equal(isCorrectTree(tree._root), true);
@@ -137,7 +137,7 @@ describe("Splay test", function () {
                 chai.assert.equal(isCorrectTree(tree._root), true);
             });
 
-            it('on BalanceTree', function () {
+            it("on BalanceTree", function () {
                 let tree = createBalanceTree();
                 for (let i = 1; i < 8; i++) {
                     tree._splay(i);
@@ -149,7 +149,7 @@ describe("Splay test", function () {
                 chai.assert.equal(isCorrectTree(tree._root), true);
             });
 
-            it('on Bamboo', function () {
+            it("on Bamboo", function () {
                 let tree = createBamboo();
                 for (let i = 1; i < 5; i++) {
                     tree._splay(i);
@@ -163,7 +163,7 @@ describe("Splay test", function () {
         });
 
         describe("split", function () {
-            it('on EmptyTree', function () {
+            it("on EmptyTree", function () {
                 let tree = createEmptyTree();
                 let a = tree.split(5);
                 chai.assert.equal(isCorrectTree(a.left), true);
@@ -174,7 +174,7 @@ describe("Splay test", function () {
                 chai.assert.equal(isCorrectTree(a.right), true);
             });
 
-            it('on BalanceTree', function () {
+            it("on BalanceTree", function () {
 
                 for (let i = 1; i < 8; i++) {
                     let tree = createBalanceTree();
@@ -192,7 +192,7 @@ describe("Splay test", function () {
                 chai.assert.equal(isCorrectTree(p.right), true);
             });
 
-            it('on Bamboo', function () {
+            it("on Bamboo", function () {
                 for (let i = 1; i < 5; i++) {
                     let tree = createBamboo();
                     let p = tree.split(i);
@@ -212,13 +212,13 @@ describe("Splay test", function () {
 
         describe("merge", function () {
 
-            it('null like one of all arg', function () {
+            it("null like one of all arg", function () {
                 let tree = createBamboo();
                 tree.merge(null);
                 chai.assert.equal(isCorrectTree(tree._root), true);
             });
 
-            it('on BalanceTree', function () {
+            it("on BalanceTree", function () {
 
                 for (let i = 1; i < 8; i++) {
                     let tree = createBalanceTree();
@@ -251,7 +251,7 @@ describe("Splay test", function () {
                 chai.assert.equal(isCorrectTree(tree._root), true);
             });
 
-            it('on Bamboo', function () {
+            it("on Bamboo", function () {
                 for (let i = 1; i < 5; i++) {
                     let tree = createBalanceTree();
                     let p = tree.split(i);
@@ -286,7 +286,7 @@ describe("Splay test", function () {
         });
 
         describe("add", function () {
-            it('Random add', function () {
+            it("Random add", function () {
                 let tree = new Splay();
                 for (let i = 0; i < 100; i++)
                     tree.add(Math.random());
@@ -296,13 +296,13 @@ describe("Splay test", function () {
 
         describe("remove", function () {
 
-            it('Remove one', function () {
+            it("Remove one", function () {
                 let tree = createBalanceTree();
                 tree.remove(4);
                 chai.assert.equal(isCorrectTree(tree._root), true);
             });
 
-            it('Remove all', function () {
+            it("Remove all", function () {
                 let tree = createBalanceTree();
                 for (let i = 1; i < 8; i++)
                     tree.remove(i);
